@@ -1,0 +1,15 @@
+import pandas as pd
+import seaborn as sns
+
+
+pd.set_option('display.max_columns', None )
+df= sns.load_dataset("titanic")
+df.head()
+
+df["age"].mean()
+print(df["age"].mean())
+print(df.groupby("sex")["age"].mean())
+
+print(df.groupby("sex").agg({"age": "mean"}))
+
+print(df.groupby(["sex","embark_town","class"]).agg({"age":"mean", "survived" : "mean", "sex" : "count"}))
