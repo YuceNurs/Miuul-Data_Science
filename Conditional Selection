@@ -13,3 +13,17 @@ df_new = df.loc[(df["age"]>50) & (df["sex"]=="male") , ["age", "class"]].head()
 df_new["age"].value_counts()
 print(df_new["age"].value_counts())
 print(df_new)
+
+df.pivot_table("survived","sex","embarked")
+
+df.pivot_table("survived","sex","embarked", aggfunc= "std")
+
+df.pivot_table("survived","sex",["embarked","class"], aggfunc=["std","mean"])
+
+df["new_age"] = pd.cut( df["age"], [0,10,18,25,40,90])
+df.head()
+
+print(df.pivot_table("survived","sex","new_age"))
+ss = df.pivot_table("survived","sex",["new_age","class"])
+pd.set_option('display.width',500)
+print(ss)
