@@ -15,3 +15,15 @@ plt.show()
 
 plt.boxplot(df["fare"])
 plt.show()
+x= np.array([1,8])
+y= np.array([0,150])
+plt.plot(x,y)
+plt.show()
+
+
+y=np.array([13,28,11,9])
+plt.plot(y, marker='o')
+plt.show()
+
+plt.plot(y, linestyle ='dotted', color='blue')
+plt.show()
