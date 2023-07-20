@@ -1,0 +1,15 @@
+import pandas as pd
+import seaborn as sns
+
+
+pd.set_option('display.max_columns', None )
+df= sns.load_dataset("titanic")
+print(df)
+#print(type(df[["age"]].head()))
+print(df["embark_town"].value_counts())
+df.loc[df["age"]> 50]["age"].head()
+
+df_new = df.loc[(df["age"]>50) & (df["sex"]=="male") , ["age", "class"]].head()
+df_new["age"].value_counts()
+print(df_new["age"].value_counts())
+print(df_new)
