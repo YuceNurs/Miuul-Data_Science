@@ -1,0 +1,41 @@
+import pandas as pd
+import seaborn as sns
+import numpy as np
+import matplotlib.pyplot as plt
+
+pd.set_option('display.max_columns', None)
+pd.set_option('display.width',500)
+df = sns.load_dataset("titanic")
+df.head()
+
+df["sex"].unique()
+df["sex"].nunique()
+print(df["sex"].unique())
+print(df["embarked"].value_counts())
+
+cat_cols = [col for col in df.columns]
+
+cat_cols = [col for col in df.columns if str(df[col].dtypes) in ["category","object","bool"]]
+print(cat_cols)
+
+df["survived"].value_counts()
+
+num_but_cat= [col for col in df.columns if df[col].nunique() < 10 and df[col].dtypes in ["int","float"]]
+
+cat_but_car = [col for col in df.columns if df[col].nunique()>20 and str(df[col].dtypes) in ["category","object"]]
+
+cat_cols = cat_cols + num_but_cat
+
+cat_cols = [col for col in cat_cols if col not in cat_but_car]
+
+df["survived"].value_counts()
+
+100* df["survived"].value_counts() / len(df)
+
+def cat_summary(dataFrame, col_name):
+    print(pd.DataFrame({col_name: dataFrame[col_name].value_counts(),
+                        "Ratio": 100* dataFrame[col_name].value_counts()/len(dataFrame)}))
+    print("###################################")
+
+cat_summary(df,"sex")
+
