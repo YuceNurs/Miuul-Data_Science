@@ -39,3 +39,6 @@ def cat_summary(dataFrame, col_name):
 
 cat_summary(df,"sex")
 
+
+for col in cat_cols :
+    cat_summary(df,col)
