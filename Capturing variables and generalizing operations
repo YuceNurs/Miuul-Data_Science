@@ -97,3 +97,16 @@ def cat_summary(dataFrame, col_name, plot=False):
 for col in cat_cols:
     cat_summary(df, col, plot= True)
 
+
+********************************************************************************************************
+
+df.groupby("sex")["survived"].mean()
+
+def target_summary_with_cat(dataframe,target, categorical_col):
+    print(pd.DataFrame({"TARGET_MEAN": dataframe.groupby(categorical_col)[target].mean()}))
+
+target_summary_with_cat(df,"survived","sex")
+
+for col in cat_cols:
+    target_summary_with_cat(df,  "survived", col)
+
